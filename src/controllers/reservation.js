@@ -10,6 +10,23 @@ exports.getAllReservations = async (req, res) => {
     }
 };
 
+// Get all reservations by user ID
+exports.getReservationsByUser = async (req, res) => {
+  try {
+    const reservations = await Reservation.findAll({ where: {
+        idUsuario: req.params.idUsuario
+    }});
+    res.json(reservations);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "Error al obtener las reservaciones",
+        error: error.message,
+      });
+  }
+};
+
 // Get a single reservation by ID
 exports.getReservationById = async (req, res) => {
     try {
