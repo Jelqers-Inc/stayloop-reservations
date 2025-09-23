@@ -7,18 +7,18 @@ const verifyToken = require('../middleware/auth');
 router.use(verifyToken);
 
 // Get all reservations
-router.get('/', reservationController.getAllReservations);
+router.get('/getall', reservationController.getAllReservations);
 
 // Get a single reservation by ID
-router.get('/:id', reservationController.getReservationById);
+router.get('/getbyid/:id', reservationController.getReservationById);
 
 // Create a new reservation
-router.post('/', reservationController.createReservation);
+router.post('/create', reservationController.createReservation);
 
 // Update a reservation
-router.put('/:id', reservationController.updateReservation);
+router.put('/update/:id', reservationController.updateReservation);
 
 // Delete a reservation
-router.delete('/:id', reservationController.deleteReservation);
+router.delete('/delete/:id', reservationController.deleteReservation);
 
 module.exports = router;
