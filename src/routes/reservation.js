@@ -3,16 +3,19 @@ const router = express.Router();
 const reservationController = require('../controllers/reservation');
 const verifyToken = require('../middleware/auth');
 
-router.use(verifyToken);
 
-router.get('/getall', reservationController.getAllReservations);
+router.get("/getall", verifyToken, reservationController.getAllReservations);
 
-router.get('/getbyid/:id', reservationController.getReservationById);
+router.get(
+  "/getbyid/:id",
+  verifyToken,
+  reservationController.getReservationById
+);
 
-router.post('/create', reservationController.createReservation);
+router.post("/create", verifyToken, reservationController.createReservation);
 
-router.put('/update/:id', reservationController.updateReservation);
+router.put("/update/:id", verifyToken, reservationController.updateReservation);
 
-router.delete('/delete/:id', reservationController.deleteReservation);
+router.delete('/delete/:id',verifyToken, reservationController.deleteReservation);
 
 module.exports = router;
