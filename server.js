@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const paypal = require('paypal-rest-sdk');
 const app = express();
+const reservationRoutes = require('./routes/reservations');
 
 // Configura PayPal
 paypal.configure({
@@ -92,6 +93,8 @@ app.get('/cancel', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+app.use("/reservations", reservationRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
