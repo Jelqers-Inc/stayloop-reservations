@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const paypal = require('paypal-rest-sdk');
 const app = express();
-const reservationRoutes = require('./routes/reservations');
+const reservationRoutes = require('./src/routes/reservation');
 
 // Configura PayPal
 paypal.configure({
