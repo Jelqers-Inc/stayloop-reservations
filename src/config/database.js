@@ -17,4 +17,13 @@ const sequelize = new Sequelize(
     }
 );
 
+(async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Conexión establecida existosamente.');
+    } catch (error) {
+        console.error('Error al conectarse a la base de datos.', error);
+    }
+});
+
 module.exports = sequelize;
